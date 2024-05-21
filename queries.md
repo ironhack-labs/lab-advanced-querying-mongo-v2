@@ -6,43 +6,46 @@
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
-<!-- Your Query Goes Here -->
+query: {name: 'Babelgum'}
+projection: {name: 1, _id: 1}
 
 <br>
 
 **2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
 
-<!-- Your Query Goes Here -->
+query: {number_of_employees: { $gt: 5000 }}
+limit: 20
 
 <br>
 
 **3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.**
 
-<!-- Your Query Goes Here -->
+query: {$and: [{founded_year: {$gte: 2000}}, {founded_year:{$lte: 2005}}]}
+projection: {name: 1, founded_year: 1}
 
 <br>
 
 **4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.**
 
-<!-- Your Query Goes Here -->
-
+query: {$and: [{'ipo.valuation_amount': {$gte: 10000000}}, {founded_year:{$lt: 2010}}]}
+projection: {name: 1, ipo: 1}
 <br>
 
 **5. All the companies that don't include the `partners` field.**
 
-<!-- Your Query Goes Here -->
+query: {partners: {$exists: false}}
 
 <br>
 
 **6. All the companies that have a null value on the `category_code` field.**
 
-<!-- Your Query Goes Here -->
+query: {category_code: {$type: 'null'}}
 
 <br>
 
 **7. Order all the companies by their IPO price in a descending order.**
 
-<!-- Your Query Goes Here -->
+sort: {'ipo.valuation_amount': -1}
 
 <br>
 
