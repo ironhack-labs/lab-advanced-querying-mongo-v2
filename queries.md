@@ -2,17 +2,35 @@
 
 # Answers
 
+- **`query`**: 
+- **`projection`**: 
+- **`sort`**: 
+- **`skip`**: 
+- **`limit`**: 
+
 ## Iteration 2
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
+
+- **`query`**: {name: "Babelgum"}
+- **`projection`**: {name: 1}
+
 <!-- Your Query Goes Here -->
+
+
 
 <br>
 
 **2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
 
 <!-- Your Query Goes Here -->
+
+- **`query`**: {number_of_employees: {$gt:5000}}
+- **`sort`**: {number_of_employees: -1}
+- **`limit`**: 20
+
+
 
 <br>
 
