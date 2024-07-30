@@ -6,13 +6,27 @@
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
+<!--
+query: /You should copy/paste the query in here/
+projection: /You should copy/paste the projection in here/
+sort: /You should copy/paste the sort in here/
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
+-->
+
 <!-- Your Query Goes Here -->
+
+query: {name: "Babelgum"}
+projection: {name:1, \_id:0}
 
 <br>
 
-**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
+**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by _number of employees_.**
 
 <!-- Your Query Goes Here -->
+
+query: {number_of_employees: { $gt: 5000 }}
+Limit: 20
 
 <br>
 
@@ -20,11 +34,17 @@
 
 <!-- Your Query Goes Here -->
 
+query: {founded_year: {$in: [2000,2001,2002,2003,2004,2005]}}
+Projection: {name:1, founded_year:1, \_id:0}
+
 <br>
 
 **4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.**
 
 <!-- Your Query Goes Here -->
+
+query: {$and:[{founded_year: {$lt: 2010}}, {"ipo.valuation_amount":{$gt:100000000}}]}
+projection: {name:1,"ipo.valuation_amount":1, \_id:0}
 
 <br>
 
@@ -32,11 +52,14 @@
 
 <!-- Your Query Goes Here -->
 
+query: {partners: {$exists: false}}
 <br>
 
 **6. All the companies that have a null value on the `category_code` field.**
 
 <!-- Your Query Goes Here -->
+
+query: {category_code: null}
 
 <br>
 
@@ -44,11 +67,17 @@
 
 <!-- Your Query Goes Here -->
 
+query: {'ipo.valuation_amount': -1}
+
 <br>
 
 **8. Retrieve the 10 companies with most employees, order by the `number of employees`.**
 
 <!-- Your Query Goes Here -->
+
+query: { number_of_employees: { $exists: true } }
+sort: {number_of_employees: -1}
+limit: 10
 
 <br>
 
@@ -56,11 +85,18 @@
 
 <!-- Your Query Goes Here -->
 
+query: {founded_month: {$in: [7,8,9,10,11,12]}}
+limit: 1000
+
 <br>
 
 **10. All the companies that have been founded on the first seven days of the month, including the seventh. Sort them by their `acquisition price` in a descending order. Limit the search to 10 documents.**
 
 <!-- Your Query Goes Here -->
+
+query: {founded_day: {$lt: 8}}
+sort: {'acquisition.price_amount': -1}
+limit: 10
 
 <br>
 
@@ -70,17 +106,25 @@
 
 <!-- Your Query Goes Here -->
 
+project: {name: 1, acquisition:1, \_id:0}
+sort: {"acquisition.price_amount": -1}
+
 <br>
 
 **2. Order the companies by their `founded year`, retrieving only their `name` and `founded year`.**
 
 <!-- Your Query Goes Here -->
 
+sort: {founded_year: -1}
+project: {founded_year:1, \_id: 0,name:1}
 <br>
 
 **3. All the companies on the 'web' `category` that have more than 4000 employees. Sort them by the amount of employees in ascending order.**
 
 <!-- Your Query Goes Here -->
+
+query: {$and:[{category_code: "web"}, {number_of_employees: {$gt: 4000}}]}
+sort: {number_of_employees: -1}
 
 <br>
 
@@ -88,10 +132,13 @@
 
 <!-- Your Query Goes Here -->
 
+query: {$and: [{ "acquisition.price_amount": { $gt: 10000000 } },{ "acquisition.price_currency_code": "EUR" }]}
 <br>
 
 **5. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.**
 
 <!-- Your Query Goes Here -->
+
+query: {$and: [{founded_year: {gte: 2000}},{founded_year: {lte: 2010}},{"acquisition.acquired_year": {gte: 2011}}]}
 
 <br>
