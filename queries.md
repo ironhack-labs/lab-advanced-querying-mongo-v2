@@ -5,12 +5,14 @@
 ## Iteration 2
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
+{ name: "Babelgum" } PROJECT = { name: 1 }
 
 <!-- Your Query Goes Here -->
 
 <br>
 
-**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
+**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by _number of employees_.**
+{ number_of_employees: { $gte: 5000} } Limit: 20
 
 <!-- Your Query Goes Here -->
 
