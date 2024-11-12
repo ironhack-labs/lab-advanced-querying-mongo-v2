@@ -6,19 +6,23 @@
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
-<!-- Your Query Goes Here -->
-
+- **`query`**: {name: "Babelgum"}
+- **`projection`**: {name: 1}
 <br>
 
 **2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: {number_of_employees: {$gt: 5000}}
+- **`sort`**: {number_of_employees: -1}
+- **`limit`**: 20
 
 <br>
 
 **3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: {$and: [{founded_year: {$gte: 2000}}, {founded_year: {$lte: 2005}}]}
+- **`sort`**: {name: 1, founded_year: 1}
+
 
 <br>
 
@@ -30,13 +34,13 @@
 
 **5. All the companies that don't include the `partners` field.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: {partners: {$exists: false}}
 
 <br>
 
 **6. All the companies that have a null value on the `category_code` field.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: {category_code: {$type: 10}}
 
 <br>
 
