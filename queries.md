@@ -8,18 +8,24 @@
 
 <!-- Your Query Goes Here -->
 
+query: {name:"Babelgum"}
+project: {name:1, \_id:0}
 <br>
 
-**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
+**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by _number of employees_.**
 
 <!-- Your Query Goes Here -->
 
+query: {number_of_employees:{$gt:5000}}
+limit : 20;
 <br>
 
 **3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.**
 
 <!-- Your Query Goes Here -->
 
+query: {founded_year:{$in:[2000,2001,2002,2003,2004,2005]}}
+project: {name:1,founded_year:2}
 <br>
 
 **4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.**
@@ -32,12 +38,14 @@
 
 <!-- Your Query Goes Here -->
 
+{partners: {$exists: false}}
 <br>
 
 **6. All the companies that have a null value on the `category_code` field.**
 
 <!-- Your Query Goes Here -->
 
+{category_code: {$type: 'null'}}
 <br>
 
 **7. Order all the companies by their IPO price in a descending order.**
