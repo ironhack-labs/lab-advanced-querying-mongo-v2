@@ -25,7 +25,6 @@ $ git push origin master
 
 - Create a Pull Request and submit your assignment.
 
-
 ## Deliverables
 
 Since we will be querying our database from Mongo Compass, you will need to copy/paste the `query`, `projection`, `sort`, `skip` and `limit` you entered on Mongo Compass. In the `queries.md` file, you will find the instructions about the queries you need to do, and a field to fill the answers.
@@ -53,7 +52,7 @@ The database contains more than 18k documents. Each document holds the data abou
 1. You will find the `.zip` file of the database on the **lab** folder.
 2. Unzip the file
 3. Open MongoDB Compass and connect to your MongoDB server.
-4. Create a new database named `companiesDB` and inside of it a collection  named `companies`.
+4. Create a new database named `companiesDB` and inside of it a collection named `companies`.
 5. Import the data from the .json file in to the collection `companies`.
 6. Check on MongoDB Compass if everything goes ok:
 
@@ -105,7 +104,7 @@ You already know how this goes, so let's start working:
   <summary>Solution</summary>
 
 - Query: `{$and: [{'ipo.valuation_amount': {$gte: 10000000}}, {founded_year:{$lt: 2010}}]}`
-    - Shorthand: `{founded_year: {$lt:2010}, "ipo.valuation_amount": {$gt: 100000000}}`
+  - Shorthand: `{founded_year: {$lt:2010}, "ipo.valuation_amount": {$gt: 100000000}}`
 - Projection: `{name: 1, _id: 0, ipo: 1}`
 
 </details>
@@ -151,7 +150,7 @@ You already know how this goes, so let's start working:
   <summary>Solution</summary>
 
 - Query: `{ number_of_employees: { $exists: true } }`
-- Sort:  `{number_of_employees: -1}`
+- Sort: `{number_of_employees: -1}`
 - Limit: `10`
 
 </details>
