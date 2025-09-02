@@ -6,62 +6,92 @@
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
-<!-- Your Query Goes Here -->
-
+query: {name:"Babelgum"}
+projection: /You should copy/paste the projection in here/
+sort: /You should copy/paste the sort in here/
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
 <br>
 
 **2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
 
-<!-- Your Query Goes Here -->
-
+query: {number_of_employees:{$gte:5000}}
+projection: /You should copy/paste the projection in here/
+sort: {number_of_employees:-1}
+skip: /You should copy/paste the skip in here/
+limit: 20
 <br>
 
 **3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.**
 
-<!-- Your Query Goes Here -->
-
+query: {$and:[{founded_year:{$gte:2000}},{founded_year:{$lte:2005}}]}
+projection: {name:1,founded_year:1}
+sort: /You should copy/paste the sort in here/
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
 <br>
 
 **4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.**
 
-<!-- Your Query Goes Here -->
-
+query: {$and:[{"ipo.valuation_amount":{$gte:100000000}},{founded_year:{$lte:2010}}]}
+projection: {name:1,ipo:1}
+sort: /You should copy/paste the sort in here/
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
 <br>
 
 **5. All the companies that don't include the `partners` field.**
 
-<!-- Your Query Goes Here -->
-
+query: {partners:{$exists:false}}
+projection: /You should copy/paste the projection in here/
+sort: /You should copy/paste the sort in here/
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
 <br>
 
 **6. All the companies that have a null value on the `category_code` field.**
 
-<!-- Your Query Goes Here -->
-
+query: {category_code:null}
+projection: /You should copy/paste the projection in here/
+sort: /You should copy/paste the sort in here/
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
 <br>
 
 **7. Order all the companies by their IPO price in a descending order.**
 
-<!-- Your Query Goes Here -->
-
+query: 
+projection: /You should copy/paste the projection in here/
+sort: {"ipo.valuation_amount": -1 }
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
 <br>
 
 **8. Retrieve the 10 companies with most employees, order by the `number of employees`.**
 
-<!-- Your Query Goes Here -->
-
+query:
+projection: /You should copy/paste the projection in here/
+sort: {number_of_employees:-1}
+skip: /You should copy/paste the skip in here/
+limit: 10
 <br>
 
 **9. All the companies founded on the second semester of the year (July to December). Limit your search to 1000 companies.**
 
-<!-- Your Query Goes Here -->
-
+query: {founded_month:{$in:[7,8,9,10,11,12]}}
+projection: /You should copy/paste the projection in here/
+sort: 
+skip: /You should copy/paste the skip in here/
+limit: 1000
 <br>
 
 **10. All the companies that have been founded on the first seven days of the month, including the seventh. Sort them by their `acquisition price` in a descending order. Limit the search to 10 documents.**
 
-<!-- Your Query Goes Here -->
-
+query: {founded_day:{$in:[1,2,3,4,5,6,7]}}
+projection: /You should copy/paste the projection in here/
+sort: {"acquisition.price_amount":-1}
+skip: /You should copy/paste the skip in here/
+limit: /You should copy/paste the limit in here/
 <br>
 
 ## Iteration 3 (Bonus)
