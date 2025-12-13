@@ -32,7 +32,7 @@
 
 <!-- Your Query Goes Here -->
 - **`query`**: {
-  $and: [{ "acquisition.price_amount": { $gte: 100000 } },{ founded_year: { $lte: 20010 } }]}
+  $and: [{ "acquisition.price_amount": { $gte: 100000 } },{ founded_year: { $lte: 2010 } }]}
 - **`projection`**: { name: 1, ipo: 1, _id: 0 }
 
 <br>
@@ -54,7 +54,7 @@
 **7. Order all the companies by their IPO price in a descending order.**
 
 <!-- Your Query Goes Here -->
-- **`sort`**: {ipo: -1}
+- **`sort`**: {'ipo.valuation_amount': -1}
 <br>
 
 **8. Retrieve the 10 companies with most employees, order by the `number of employees`.**
