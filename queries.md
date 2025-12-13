@@ -23,7 +23,7 @@
 **3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.**
 
 <!-- Your Query Goes Here -->
-- **`query`**: {$and: [{founded_year: {$gte: 2000}}, {founded_year:{$lte: 20005}}]}
+- **`query`**: {$and: [{founded_year: {$gte: 2000}}, {founded_year:{$lte: 2005}}]}
 - **`projection`**: {name: 1, founded_year: 1, _id:0}
 
 <br>
@@ -32,7 +32,7 @@
 
 <!-- Your Query Goes Here -->
 - **`query`**: {
-  $and: [{ "acquisition.price_amount": { $gte: 100000 } },{ founded_year: { $lte: 2010 } }]}
+  $and: [{ 'ipo.valuation_amount': { $gte: 100000 } },{ founded_year: { $lte: 2010 } }]}
 - **`projection`**: { name: 1, ipo: 1, _id: 0 }
 
 <br>
@@ -87,7 +87,7 @@
 **1. All the companies that have been acquired after 2010, order by the acquisition amount, and retrieve only their `name` and `acquisition` field.**
 
 <!-- Your Query Goes Here -->
-- **`query`**: {"acquisition.acquired_year": {$gte: 2010}}
+- **`query`**: {"acquisition.acquired_year": {$gt: 2010}}
 - **`sort`**: {"acquisition.price_amount": 1}
 - **`projection`**: {name:1, acquisition:1, _id:0}
 
@@ -104,7 +104,7 @@
 **3. All the companies on the 'web' `category` that have more than 4000 employees. Sort them by the amount of employees in ascending order.**
 
 <!-- Your Query Goes Here -->
-- **`query`**: {$and: {category_code: "web}, {number_of_employees: {$gt: 4000}}}
+- **`query`**: {$and: [{category_code: "web"}, {number_of_employees: {$gt: 4000}}]}
 - **`sort`**: {number_of_employees: 1}
 
 <br>
@@ -112,7 +112,7 @@
 **4. All the companies whose acquisition amount is more than 10.000.000, and currency is 'EUR'.**
 
 <!-- Your Query Goes Here -->
-- **`query`**: {$and: [{"acquisitions.price_amount": {$gt: 10000000}}, {"acquisitions.price_currency_code": "EUR"}]}
+- **`query`**: {$and: [{"acquisition.price_amount": {$gt: 10000000}}, {"acquisitions.price_currency_code": "EUR"}]}
 
 <br>
 
