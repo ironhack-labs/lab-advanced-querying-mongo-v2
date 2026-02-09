@@ -15,6 +15,7 @@
 
 - query: `{number_of_employees: {$gt: 5000}}`
 - projection: `{number_of_employees: 1}`
+- order: `{number_of_employees: -1}`
 - limit: `20`
 
 <br>
@@ -29,7 +30,7 @@
 
 **4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.**
 
-- query: `{founded_year: { $lt: 2010 }, ipo: {$exists: true}, valuation_amount: {$gt: 100000000} }`
+- query: `{founded_year: { $lt: 2010 }, "ipo.valuation_amount": {$gt: 100000000} }`
 - projection: `{_id: 0, name: 1, ipo: 1}`
 
 
@@ -86,7 +87,7 @@
 
 - query: `{ "acquisition.acquired_year": {$lt: 2010} }`
 - projection: `{ name: 1, _id: 0, acquisition: 1 }`
-- sort: `{ "acquisition.price_amount": 1 }`
+- sort: `{ "acquisition.price_amount": -1 }`
 
 
 <br>
@@ -117,7 +118,7 @@
 
 **5. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.**
 
-- query: `{founded_year: {$in: [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010], $nin: [2011]}}`
+- query: `{founded_year: {$get: 2000, $lte: 2010}, $or: [{"acquisition.acquired_year": {$gte: 2011}}, {acquisition: {$exists: false}}]}`
 
 
 <br>
