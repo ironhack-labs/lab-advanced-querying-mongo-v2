@@ -6,7 +6,7 @@
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
-Query: { name: { $in: ["Babelgum"] } }
+Query: { name: "Babelgum" }
 Project: {name: 1}
 
 <br>
@@ -34,13 +34,13 @@ Project: {name: 1, ipo: 1}
 
 **5. All the companies that don't include the `partners` field.**
 
-Query: {partners: {$not: {$size: 0}}}
+Query: {partners: {$size: 0}}
 
 <br>
 
 **6. All the companies that have a null value on the `category_code` field.**
 
-Query: {category_code: {$eq: null}}
+Query: {category_code: {$type: null}}
 
 <br>
 
