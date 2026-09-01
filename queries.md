@@ -108,7 +108,7 @@ limit: 10
 
 **1. All the companies that have been acquired after 2010, order by the acquisition amount, and retrieve only their `name` and `acquisition` field.**
 
-query: {"acquisition.acquired_year": {$gte: 2010}}
+query: {"acquisition.acquired_year": {$gt: 2010}}
 projection: {name: 1, acquisition: 1, _id: 0}
 sort: {"acquisition.price_amount": -1}
 skip: 
@@ -148,7 +148,7 @@ limit:
 
 **5. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.**
 
-query: {founded_year: {$gte: 2000}, founded_year: {$lte: 2010}, "acquisition.acquired_year": {$gte: 2011}}
+query: {$and: [{founded_year: {$gte: 2000}}, {founded_year: {$lte: 2010}}, {"acquisition.acquired_year":{$gte: 2011}}]}
 projection: 
 sort: 
 skip: 
