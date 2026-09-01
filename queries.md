@@ -7,6 +7,7 @@
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
 {name: "Babelgum" }
+project: { name: 1, _id: 0 }
 
 <br>
 
@@ -34,7 +35,7 @@ project: {name: 1, _id: 0, ipo: 1}
 
 **5. All the companies that don't include the `partners` field.**
 
-{partners: {$exists: "false"} }
+{partners: {$exists: false} }
 
 <br>
 
