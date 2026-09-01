@@ -14,6 +14,7 @@
 
 { number_of_employees: {$gt: 5000} }
 limit:20
+{ number_of_employees: -1 }
 
 <br>
 
@@ -26,7 +27,7 @@ project: {name: 1, founded_year: 1, _id:0}
 
 **4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.**
 
-{$and: [{"ipo.valuation_amount":{$gte: 100000000} }, {founded_year:{$lte: 2010} }]}
+{$and: [{"ipo.valuation_amount":{$gt: 100000000} }, {founded_year:{$lt: 2010} }]}
 project: {name: 1, _id: 0, ipo: 1}
 
 <br>
@@ -58,8 +59,8 @@ Limit:10
 
 **9. All the companies founded on the second semester of the year (July to December). Limit your search to 1000 companies.**
 
-{founded_month: {$gte: 7} }
-~Limit:1000
+{founded_month: {$gte: 7 ,$lte:12} }
+Limit:1000
 
 <br>
 
