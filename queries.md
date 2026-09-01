@@ -8,7 +8,9 @@
 
 <!-- Your Query Goes Here -->
 
-{name:'Babelgum'} {name: 1, \_id: 0}
+{name:'Babelgum'}
+
+{name: 1, \_id: 0}
 
 <br>
 
@@ -16,8 +18,13 @@
 
 <!-- Your Query Goes Here -->
 
-{number_of_employees:{$gte: 5000}}
+{number_of_employees: {$gt: 5000}}
 
+{number_of_employees: 1}
+
+<!-- limit  -->
+
+20
 <br>
 
 **3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.**
@@ -34,7 +41,7 @@
 
 <!-- Your Query Goes Here -->
 
-{$and: [{'ipo.valuation_amount': {$gte: 10000000}}, {founded_year:{$lt: 2010}}]} {name: 1, \_id: 0, ipo: 1}
+{$and: [{'ipo.valuation_amount': {$gte: 100000000}}, {founded_year:{$lt: 2010}}]} {name: 1, \_id: 0, ipo: 1}
 
 <br>
 
@@ -42,7 +49,9 @@
 
 <!-- Your Query Goes Here -->
 
-{'partner':{'$exists':false}} <br>
+{partners: {$exists: false}}
+
+ <br>
 
 **6. All the companies that have a null value on the `category_code` field.**
 
@@ -64,7 +73,13 @@
 
 <!-- Your Query Goes Here -->
 
-{ 'number_of_employees': { $exists: true } } {'number_of_employees': -1} limit 10
+{ 'number_of_employees': { $exists: true } }
+
+{'number_of_employees': -1}
+
+<!-- limit  -->
+
+10
 
 <br>
 
@@ -74,7 +89,9 @@
 
 {'founded_month': {$gte: 7}}
 
-limit 1000
+<!-- limit  -->
+
+1000
 
 <br>
 
@@ -86,7 +103,9 @@ limit 1000
 
 {'acquisition.price_amount': -1}
 
-Limit: 10
+<!-- limit  -->
+
+10
 
 <br>
 
