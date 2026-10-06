@@ -2,35 +2,70 @@
 
 # Answers
 
+## Iteration 1
+
+**Database Setup - Crunchbase**
+
+1. ✅ Downloaded the `.zip` file from the lab folder
+2. ✅ Unzipped the file
+3. ✅ Opened MongoDB Compass and connected to MongoDB server
+4. ✅ Created database `companiesDB` and collection `companies`
+5. ✅ Imported data from the `.json` file into the `companies` collection
+6. ✅ Verified the data in MongoDB Compass
+
+Database: `companiesDB` | Collection: `companies` | Documents: 18,282
+
+<br>
+
 ## Iteration 2
 
 **1. All the companies whose name match 'Babelgum'. Retrieve only their `name` field.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: `{name: 'Babelgum'}`
+- **`projection`**: `{name: 1, _id: 0}`
+- **`sort`**:
+- **`skip`**:
+- **`limit`**:
 
 <br>
 
-**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by *number of employees*.**
+**2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by _number of employees_.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: `{number_of_employees: {$gt: 5000}}`
+- **`projection`**:
+- **`sort`**: `{number_of_employees: -1}`
+- **`skip`**:
+- **`limit`**: `20`
 
 <br>
 
 **3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: `{$and: [{founded_year: {$gte: 2000}}, {founded_year: {$lte: 2005}}]}`
+- **`projection`**: `{name: 1, founded_year: 1, _id: 0}`
+- **`sort`**:
+- **`skip`**:
+- **`limit`**:
 
 <br>
 
 **4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: `{$and: [{'ipo.valuation_amount': {$gte: 10000000}}, {founded_year: {$lt: 2010}}]}`
+- **`projection`**: `{name: 1, ipo: 1, _id: 0}`
+- **`sort`**:
+- **`skip`**:
+- **`limit`**:
 
 <br>
 
 **5. All the companies that don't include the `partners` field.**
 
-<!-- Your Query Goes Here -->
+- **`query`**: `{partners: {$exists: false}}`
+- **`projection`**:
+- **`sort`**:
+- **`skip`**:
+- **`limit`**:
 
 <br>
 
@@ -90,7 +125,7 @@
 
 <br>
 
-**5. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.**
+**5. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011**
 
 <!-- Your Query Goes Here -->
 
